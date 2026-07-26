@@ -1,0 +1,19 @@
+# WordPress files (cloned from repo)
+wordpress/
+
+# Backups
+backups/
+
+# Docker volumes
+db_data/
+
+# Environment variables (contains passwords)
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
