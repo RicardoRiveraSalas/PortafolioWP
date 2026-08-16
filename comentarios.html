@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comentarios · Supabase</title>
+    <meta name="description" content="Ver, eliminar y exportar comentarios a Excel" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- SDK oficial de Supabase (UMD) desde CDN.
+         Debe cargarse ANTES que js/supabase.js y js/comentarios.js. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Contenedor de mensajes tipo toast -->
+    <div id="mensajes" class="mensajes" aria-live="polite"></div>
+
+    <header class="cabecera">
+        <div class="contenedor">
+            <h1>Gestión de Comentarios</h1>
+            <p class="subtitulo">Ver, eliminar y exportar a Excel (CSV)</p>
+            <nav class="nav-paginas" aria-label="Navegación principal">
+                <a href="index.html">Registros</a>
+                <a href="comentarios.html" aria-current="page">Comentarios</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- ===================== PANEL DE ACCIONES ===================== -->
+        <section class="tarjeta" aria-labelledby="titulo-acciones">
+            <h2 id="titulo-acciones">Comentarios</h2>
+
+            <div class="barra-busqueda">
+                <label for="buscador" class="sr-only">Buscar comentarios</label>
+                <input
+                    type="search"
+                    id="buscador"
+                    placeholder="Buscar en comentarios, nombre o correo..."
+                    aria-label="Buscar comentarios"
+                />
+            </div>
+
+            <div class="acciones-formulario">
+                <button type="button" id="btn-exportar" class="btn btn-primario">
+                    Exportar a Excel
+                </button>
+                <button type="button" id="btn-eliminar-todos" class="btn btn-ghost">
+                    Eliminar seleccionados
+                </button>
+                <span id="contador-registros" class="contador">0 comentarios</span>
+            </div>
+
+            <p class="nota-seguridad">
+                ⚠️ Esta página usa la clave <strong>anon</strong> pública. Las
+                operaciones están protegidas por las políticas RLS de Supabase.
+                Para producción, activa Supabase Auth (ver README).
+            </p>
+        </section>
+
+        <!-- ===================== LISTADO ===================== -->
+        <section class="tarjeta" aria-labelledby="titulo-lista">
+            <div class="cabecera-lista">
+                <h2 id="titulo-lista">Listado de comentarios</h2>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <input type="checkbox" id="check-todos"
+                                       aria-label="Seleccionar todos" />
+                            </th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Comentario</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+
+                <p id="sin-registros" class="sin-registros oculto">
+                    No hay comentarios para mostrar.
+                </p>
+            </div>
+
+            <nav id="paginacion" class="paginacion" aria-label="Paginación"></nav>
+        </section>
+    </main>
+
+    <!-- Indicador de carga (spinner) -->
+    <div id="spinner" class="spinner-overlay oculto" role="status" aria-label="Cargando">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts: config -> supabase -> comentarios -->
+    <script src="js/config.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/comentarios.js"></script>
+</body>
+</html>

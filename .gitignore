@@ -17,3 +17,19 @@ Thumbs.db
 # IDE files
 .vscode/
 .idea/
+
+# ============================================================
+# Formulario web estático (Supabase + GitHub Pages)
+# ============================================================
+# La clave publishable/anon es pública por diseño y puede estar en js/config.js.
+# NUNCA incluir la service_role key ni la contraseña de la base de datos.
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.env.*
+*.local
+*.log
+npm-debug.log*
+dist/
+.cache/

@@ -1,0 +1,474 @@
+/* ============================================================================
+   css/style.css
+   Diseño moderno tipo aplicación administrativa.
+   Paleta neutra, sin colores excesivamente llamativos.
+   ============================================================================ */
+
+:root {
+    --bg: #f4f6f8;
+    --tarjeta: #ffffff;
+    --texto: #1f2933;
+    --texto-suave: #52606d;
+    --borde: #e4e7eb;
+    --primario: #2563eb;
+    --primario-hover: #1d4ed8;
+    --secundario: #64748b;
+    --secundario-hover: #475569;
+    --peligro: #dc2626;
+    --peligro-hover: #b91c1c;
+    --exito-bg: #ecfdf5;
+    --exito-texto: #047857;
+    --error-bg: #fef2f2;
+    --error-texto: #b91c1c;
+    --radio: 12px;
+    --sombra: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    --fuente: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial,
+        sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fuente);
+    background: var(--bg);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ----------------------- Cabecera ----------------------- */
+.cabecera {
+    background: var(--tarjeta);
+    border-bottom: 1px solid var(--borde);
+    padding: 24px 0;
+    margin-bottom: 24px;
+}
+
+.cabecera h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.subtitulo {
+    margin: 4px 0 0;
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+/* Navegación entre páginas */
+.nav-paginas {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.nav-paginas a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--primario);
+    padding: 6px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: #fff;
+    transition: background 0.15s, color 0.15s;
+}
+
+.nav-paginas a:hover {
+    background: #eff6ff;
+}
+
+.nav-paginas a[aria-current="page"] {
+    background: var(--primario);
+    color: #fff;
+    border-color: var(--primario);
+}
+
+/* Nota de seguridad */
+.nota-seguridad {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    color: var(--texto-suave);
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+/* ----------------------- Tarjetas ----------------------- */
+.tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.tarjeta h2 {
+    margin: 0 0 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ----------------------- Formulario ----------------------- */
+.grid-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--texto-suave);
+}
+
+.requerido {
+    color: var(--peligro);
+}
+
+.campo input,
+.campo textarea {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--texto);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--primario);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.acciones-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* ----------------------- Botones ----------------------- */
+.btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s,
+        transform 0.05s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-primario {
+    background: var(--primario);
+    color: #fff;
+}
+
+.btn-primario:hover:not(:disabled) {
+    background: var(--primario-hover);
+}
+
+.btn-secundario {
+    background: #fff;
+    color: var(--secundario);
+    border-color: var(--borde);
+}
+
+.btn-secundario:hover:not(:disabled) {
+    background: #f8fafc;
+    color: var(--secundario-hover);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--peligro);
+    border-color: transparent;
+}
+
+.btn-ghost:hover:not(:disabled) {
+    background: var(--error-bg);
+}
+
+/* ----------------------- Lista / búsqueda ----------------------- */
+.cabecera-lista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.contador {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.barra-busqueda {
+    margin: 16px 0;
+}
+
+.barra-busqueda input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.barra-busqueda input:focus {
+    outline: none;
+    border-color: var(--primario);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* ----------------------- Tabla ----------------------- */
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabla th,
+.tabla td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--borde);
+    vertical-align: top;
+}
+
+.tabla th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: var(--texto-suave);
+    white-space: nowrap;
+}
+
+.tabla tbody tr:hover {
+    background: #f9fafb;
+}
+
+.mono {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color: var(--texto-suave);
+    font-size: 0.8rem;
+}
+
+.sin-registros {
+    padding: 24px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+.btn-accion {
+    font-family: inherit;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--borde);
+    background: #fff;
+    cursor: pointer;
+    margin-right: 6px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-editar:hover {
+    background: #eff6ff;
+    color: var(--primario);
+    border-color: var(--primario);
+}
+
+.btn-eliminar:hover {
+    background: var(--error-bg);
+    color: var(--peligro);
+    border-color: var(--peligro);
+}
+
+/* ----------------------- Paginación ----------------------- */
+.paginacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.btn-pagina {
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border: 1px solid var(--borde);
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-pagina:hover:not(:disabled) {
+    background: #f1f5f9;
+}
+
+.btn-pagina.activo {
+    background: var(--primario);
+    color: #fff;
+    border-color: var(--primario);
+}
+
+.btn-pagina:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ----------------------- Mensajes (toast) ----------------------- */
+.mensajes {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 320px;
+}
+
+.toast {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    box-shadow: var(--sombra);
+    animation: aparecer 0.2s ease;
+}
+
+.toast-exito {
+    background: var(--exito-bg);
+    color: var(--exito-texto);
+    border-left: 4px solid var(--exito-texto);
+}
+
+.toast-error {
+    background: var(--error-bg);
+    color: var(--error-texto);
+    border-left: 4px solid var(--error-texto);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----------------------- Spinner ----------------------- */
+.spinner-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--borde);
+    border-top-color: var(--primario);
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ----------------------- Utilidades ----------------------- */
+.oculto {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ----------------------- Responsive ----------------------- */
+@media (max-width: 640px) {
+    .grid-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .cabecera h1 {
+        font-size: 1.35rem;
+    }
+
+    .tarjeta {
+        padding: 16px;
+    }
+
+    .acciones-formulario .btn {
+        flex: 1 1 auto;
+    }
+}
