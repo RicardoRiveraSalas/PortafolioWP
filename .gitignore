@@ -1,35 +1,27 @@
-# WordPress files (cloned from repo)
-wordpress/
-
-# Backups
-backups/
-
-# Docker volumes
-db_data/
-
-# Environment variables (contains passwords)
-.env
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-
-# ============================================================
-# Formulario web estático (Supabase + GitHub Pages)
-# ============================================================
-# La clave publishable/anon es pública por diseño y puede estar en js/config.js.
-# NUNCA incluir la service_role key ni la contraseña de la base de datos.
+# Dependencias / lockfiles (no necesarios para este sitio estático)
 node_modules/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# Archivos de entorno / secretos (nunca subir credenciales)
+.env
 .env.*
 *.local
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Logs
 *.log
 npm-debug.log*
+
+# Builds / caches
 dist/
 .cache/
